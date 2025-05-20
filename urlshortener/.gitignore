@@ -1,0 +1,57 @@
+# Maven build output
+target/
+
+# Maven temporary and backup files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# Do NOT ignore the Maven Wrapper files or folder
+# Avoid ignoring the entire .mvn/ directory so that the wrapper files are included
+# If you have other temp files inside .mvn, ignore them specifically
+
+# IDE files
+.vscode/
+cursor.json
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS system files (in case you share code with Mac users)
+.DS_Store
+
+# Logs
+*.log
+logs/
+spring.log
+
+# Environment files
+.env
+*.env
+*.local
+
+# Java crash logs
+hs_err_pid*
+replay_pid*
+
+# Binary and generated files
+*.jar
+*.war
+*.ear
+
+# Temporary and swap files
+*.tmp
+*.swp
+*.bak
+
+# Common frontend folders (in case you use frontend tooling)
+node_modules/
+dist/
+build/
