@@ -47,6 +47,12 @@ public class URLShortenerService {
         return toResponse(url);
     }
 
+    public void deleteUrl(String shortCode) {
+        URLShortenerModel url = urlRepository.findByShortCode(shortCode)
+            .orElseThrow(() -> new ResourceNotFoundException("URL not found with short code: " + shortCode));
+        urlRepository.delete(url);
+    }
+
     private String generateShortCode() {
         String shortCode;
         do {
