@@ -38,6 +38,15 @@ public class URLShortenerService {
         return toResponse(url);
     }
 
+    public UrlResponse updateUrl(String shortCode, UrlRequest request) {
+        URLShortenerModel url = urlRepository.findByShortCode(shortCode)
+            .orElseThrow(() -> new ResourceNotFoundException("URL not found with short code: " + shortCode));
+        url.setUrl(request.getUrl());
+        url.setUpdatedAt(Instant.now());
+        urlRepository.save(url);
+        return toResponse(url);
+    }
+
     private String generateShortCode() {
         String shortCode;
         do {
