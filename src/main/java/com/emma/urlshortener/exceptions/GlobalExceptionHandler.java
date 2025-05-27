@@ -1,4 +1,4 @@
-package com.emma.urlshortener.exception;
+package com.emma.urlshortener.exceptions;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -40,6 +41,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> handleNotFound(ResourceNotFoundException ex) {
         return createErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
+
+    
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<?> handleMethodNotSupported(HttpRequestMethodNotSupportedException ex) {
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED)
+                             .body(Map.of("error", "Requested method is not supported: " + ex.getMethod()));
+    }
+
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGenericException(Exception ex) {
