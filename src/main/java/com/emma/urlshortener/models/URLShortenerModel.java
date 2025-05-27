@@ -12,7 +12,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @Entity
 @Table(name = "urls")
-public class URLShortenerModel {
+public class UrlShortenerModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,4 +1,4 @@
-package com.emma.urlshortener.exception;
+package com.emma.urlshortener.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

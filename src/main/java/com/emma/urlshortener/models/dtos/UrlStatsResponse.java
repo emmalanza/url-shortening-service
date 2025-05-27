@@ -1,11 +1,8 @@
 package com.emma.urlshortener.models.dtos;
 
 import java.time.Instant;
- 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import lombok.Data;
 @Data
 public class UrlStatsResponse {
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.emma.urlshortener.models.dtos.UrlRequest;
 import com.emma.urlshortener.models.dtos.UrlResponse;
 import com.emma.urlshortener.models.dtos.UrlStatsResponse;
-import com.emma.urlshortener.services.URLShortenerService;
+import com.emma.urlshortener.services.UrlShortenerService;
 
 import jakarta.validation.Valid;
 
@@ -22,9 +22,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/shorten")
 public class URLShortenerController {
 
-    private final URLShortenerService urlShortenerService;
+    private final UrlShortenerService urlShortenerService;
 
-    public URLShortenerController(URLShortenerService urlShortenerService) {
+    public URLShortenerController(UrlShortenerService urlShortenerService) {
         this.urlShortenerService = urlShortenerService;
     }
 

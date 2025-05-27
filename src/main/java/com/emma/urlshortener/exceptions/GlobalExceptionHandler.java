@@ -1,4 +1,4 @@
-package com.emma.urlshortener.exception;
+package com.emma.urlshortener.exceptions;
 
 import java.time.Instant;
 import java.time.ZoneId;
