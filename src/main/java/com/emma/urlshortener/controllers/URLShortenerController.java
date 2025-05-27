@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.emma.urlshortener.models.dtos.UrlRequest;
 import com.emma.urlshortener.models.dtos.UrlResponse;
+import com.emma.urlshortener.models.dtos.UrlStatsResponse;
 import com.emma.urlshortener.services.URLShortenerService;
 
 import jakarta.validation.Valid;
@@ -49,5 +50,11 @@ public class URLShortenerController {
     public ResponseEntity<Void> deleteUrl(@PathVariable String shortCode) {
         urlShortenerService.deleteUrl(shortCode);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{shortCode}/stats")
+    public ResponseEntity<UrlStatsResponse> getUrlStats(@PathVariable String shortCode) {
+        UrlStatsResponse urlStatsResponse = urlShortenerService.getUrlStats(shortCode);
+        return ResponseEntity.ok(urlStatsResponse);
     }
 }

@@ -9,6 +9,7 @@ import com.emma.urlshortener.exception.ResourceNotFoundException;
 import com.emma.urlshortener.models.URLShortenerModel;
 import com.emma.urlshortener.models.dtos.UrlRequest;
 import com.emma.urlshortener.models.dtos.UrlResponse;
+import com.emma.urlshortener.models.dtos.UrlStatsResponse;
 import com.emma.urlshortener.repositories.URLShortenerRepository;
 
 @Service
@@ -53,6 +54,12 @@ public class URLShortenerService {
         urlRepository.delete(url);
     }
 
+    public UrlStatsResponse getUrlStats(String shortCode) {
+        URLShortenerModel url = urlRepository.findByShortCode(shortCode)
+            .orElseThrow(() -> new ResourceNotFoundException("URL not found with short code: " + shortCode));
+        return toStatsResponse(url);
+    }
+
     private String generateShortCode() {
         String shortCode;
         do {
@@ -68,6 +75,17 @@ public class URLShortenerService {
         res.setShortCode(shortUrl.getShortCode());
         res.setCreatedAt(shortUrl.getCreatedAt());
         res.setUpdatedAt(shortUrl.getUpdatedAt());
+        return res;
+    }
+
+    private UrlStatsResponse toStatsResponse(URLShortenerModel shortUrl) {
+        UrlStatsResponse res = new UrlStatsResponse();
+        res.setId(shortUrl.getId());
+        res.setUrl(shortUrl.getUrl());
+        res.setShortCode(shortUrl.getShortCode());
+        res.setCreatedAt(shortUrl.getCreatedAt());
+        res.setUpdatedAt(shortUrl.getUpdatedAt());
+        res.setAccessCount(shortUrl.getAccessCount());
         return res;
     }
 }
